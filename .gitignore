@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+work/
+.env
+.env.*
+*.verification.json
+*.allowed.png
+*.diff.png

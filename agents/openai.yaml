@@ -1,0 +1,4 @@
+interface:
+  display_name: "PatchLock · 锁域修图"
+  short_description: "修改真实照片中的文字与物体，局部贴合并校验其余像素保持不变"
+  default_prompt: "使用 $patchlock 修改这张真实照片中的指定内容，贴合原有字形与透视，保护其他区域，并交付局部回填结果和像素校验。"
