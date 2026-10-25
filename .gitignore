@@ -8,3 +8,11 @@ work/
 *.verification.json
 *.allowed.png
 *.diff.png
+*.sample.json
+*.match.json
+*.strokes.json
+*.stroke-mask.png
+*.quality.json
+*.quality.html
+*.salvage.json
+*.salvage/

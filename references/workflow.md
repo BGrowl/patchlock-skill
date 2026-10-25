@@ -1,5 +1,7 @@
 # 本地工具与任务交换
 
+新分支：同图字样提取/透视放置见 [donor.md](donor.md)；照片质感匹配、旧新笔画修复和已有 AI 图回填见 [photo-tools.md](photo-tools.md)；离线视觉诊断报告见 [quality.md](quality.md)。原有 prepare/compose/verify 参数保持兼容。
+
 需要 Python 3.10+ 和 Pillow；可选自动背景配准另需 NumPy、OpenCV（含 SIFT）。优先使用当前环境已经可用的运行时。缺依赖时使用允许的依赖安装流程，或明确说明缺失；不要因此索要 API Key。所有脚本不联网、不调用模型、不覆盖已有输出。先运行相应脚本 `--help` 看完整参数。
 
 下例从本 Skill 目录运行，路径按当前任务替换。任务与照片输出放在当前工作区，不写进已安装 Skill。
@@ -57,7 +59,7 @@ python scripts/photo_patch.py verify --original "C:/work/book-task/original.png"
 
 `verify` 验证失败退出码为 2。关注 `changed_inside_allowed`、`changed_outside_allowed`、`pixel_scope_pass`、尺寸与变化边界。报告不证明文字正确，也不证明修图不可检测。
 
-单张输入上限 4000 万像素；超限先解释并协商缩小。程序保留任务原图的 ICC 配置信息，但不自动将不同候选色域匹配成原图色域，最终需检查局部色差。原文件不覆盖，归一化和 PNG 输出不保证原 JPEG 压缩字节、EXIF 或其他元数据不变。
+单张输入上限 4000 万像素；超限先解释并协商缩小。基础合成程序保留任务原图的 ICC 配置信息，但不自动转换候选色域；需要显式色彩转换与未标记 sRGB 假设时见 [photo-tools.md](photo-tools.md)，最终仍需检查局部色差。原文件不覆盖，归一化和 PNG 输出不保证原 JPEG 压缩字节、EXIF 或其他元数据不变。
 
 重试使用新任务目录或新输出文件名。`task.json` 与网站 `.moru.json` 不是同一交换格式，不能直接互换；这个 Skill 不依赖网站。
 
